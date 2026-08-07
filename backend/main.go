@@ -3,7 +3,7 @@ package main
 import (
 	"gemgo/gemini"
 	"gemgo/handlers"
-	"gemgo/midleware"
+	"gemgo/middleware"
 	"log"
 	"net/http"
 )

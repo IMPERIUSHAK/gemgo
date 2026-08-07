@@ -11,6 +11,7 @@ func HandlerFunc(w http.ResponseWriter, r *http.Request) {
 	homeTemplate, err := template.ParseFiles(filepath.Join("..", "templates", "index.html"))
 	if err != nil {
 		http.Error(w, "Error while loading page template", http.StatusInternalServerError)
+		return
 	}
 
 	if r.URL.Path != "/" {
@@ -20,9 +21,11 @@ func HandlerFunc(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method not supported", http.StatusMethodNotAllowed)
+		return
 	}
 
 	if err := homeTemplate.Execute(w, ""); err != nil {
 		http.Error(w, "Error while rendering home page", http.StatusInternalServerError)
+		return
 	}
 }

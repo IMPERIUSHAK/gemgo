@@ -12,12 +12,13 @@ func LoggingMidleware(next http.Handler) http.Handler {
 
 		start := time.Now()
 
-		log.Printf("[%s] %s %s - %s",
+		next.ServeHTTP(w, r)
+
+		log.Printf("[%s] %s %s %v",
 			r.Method,
 			r.URL.Path,
 			r.RemoteAddr,
-			time.Since(start))
-
-		next.ServeHTTP(w, r)
+			time.Since(start),
+		)
 	})
 }
