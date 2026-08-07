@@ -1,0 +1,158 @@
+:root{
+  --bg:#F3F7F7;
+  --bg-panel:#E4EDED;
+  --panel-line:#C9D6D6;
+  --ink:#16232A;
+  --ink-soft:#51636A;
+  --white:#FFFFFF;
+  --red:#E4572E;
+  --red-dark:#C6431E;
+  --green:#4C7A51;
+  --shadow-soft: 0 1px 2px rgba(22,35,42,.06), 0 6px 18px rgba(22,35,42,.06);
+  --shadow-lift: 0 4px 10px rgba(22,35,42,.10), 0 14px 30px rgba(22,35,42,.10);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0; min-height:100vh;
+  display:flex; flex-direction:column;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  font-weight:600; letter-spacing:-0.01em; margin:0;
+}
+.mono{ font-family:'IBM Plex Mono',monospace; }
+p{ color:var(--ink-soft); line-height:1.6; margin:0; }
+button{ font-family:inherit; }
+
+:focus-visible{ outline: 2.5px solid var(--red); outline-offset: 3px; }
+
+.nav{
+  border-bottom:1px solid var(--panel-line);
+}
+.nav-inner{
+  padding:18px 28px;
+  max-width:1120px; margin:0 auto;
+}
+.logo{ font-size:20px; font-weight:700; }
+.logo-dot{ color:var(--red); }
+
+.app{
+  flex:1; width:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:48px 24px 60px;
+}
+.app-head{ text-align:center; margin-bottom:26px; }
+.app-head h1{ font-size:clamp(26px,4vw,36px); margin-top:10px; }
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--green); background:#E4EFE4; border:1px solid #CFE3CF;
+  padding:6px 12px; border-radius:100px;
+}
+.eyebrow::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--green); }
+
+.fridge{
+  width:100%; max-width:560px;
+  position:relative;
+  background:linear-gradient(180deg,#EFF5F5 0%, var(--bg-panel) 100%);
+  border:1px solid var(--panel-line);
+  border-radius:var(--radius-lg);
+  padding:26px 22px 30px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7), var(--shadow-soft);
+}
+.fridge-bar{
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft);
+  margin-bottom:18px; text-transform:uppercase; letter-spacing:.05em;
+}
+.fridge-bar .lights{ display:flex; gap:6px; }
+.fridge-bar .lights span{ width:7px; height:7px; border-radius:50%; background:#C9D6D6; display:inline-block; }
+.fridge-bar .lights span:first-child{ background:var(--green); }
+
+.magnets{
+  position:relative;
+  min-height:130px;
+  display:flex; flex-wrap:wrap; gap:10px 12px; align-content:flex-start;
+  padding:6px 4px 4px;
+}
+.magnet{
+  background:var(--white);
+  border:1px solid rgba(22,35,42,.08);
+  border-radius:11px;
+  padding:9px 14px 9px 12px;
+  font-size:14.5px; font-weight:500;
+  display:inline-flex; align-items:center; gap:8px;
+  cursor:pointer; user-select:none; position:relative;
+  box-shadow:var(--shadow-soft);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+  animation: drop .5s cubic-bezier(.2,.9,.3,1.2) both;
+}
+.magnet:hover{ transform:translateY(-3px) rotate(0deg) !important; box-shadow:var(--shadow-lift); }
+.magnet.on{ background:var(--ink); color:var(--white); border-color:var(--ink); }
+.magnet .ico{ font-size:16px; line-height:1; }
+.magnet-input{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+.magnet:focus-within{ outline:2.5px solid var(--red); outline-offset:3px; }
+
+@keyframes drop{
+  from{ opacity:0; transform:translateY(-14px) scale(.9); }
+  to{ opacity:1; transform:translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce){ .magnet{ animation:none; } }
+
+.fridge-controls{
+  margin-top:20px; padding-top:18px; border-top:1px dashed var(--panel-line);
+  display:flex; flex-direction:column; gap:16px;
+}
+.control{ display:flex; flex-direction:column; gap:8px; }
+.fridge-controls .row{ display:flex; justify-content:space-between; align-items:baseline; }
+.fridge-controls label{ font-size:13px; font-weight:600; color:var(--ink-soft); }
+.control-val{ font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--ink); font-weight:600; }
+input[type="range"]{ width:100%; accent-color:var(--red); height:4px; cursor:pointer; }
+
+.fridge-cta{
+  margin-top:18px; width:100%;
+  background:var(--ink); color:var(--white); border:none;
+  padding:14px; border-radius:12px; font-size:15px; font-weight:600; cursor:pointer;
+  transition:background .15s ease, transform .15s ease;
+}
+.fridge-cta:hover{ background:var(--red); transform:translateY(-1px); }
+
+.hint{ font-size:12.5px; color:var(--ink-soft); margin-top:10px; text-align:center; min-height:16px; }
+
+.ing-add{ margin-top:18px; padding-top:18px; border-top:1px dashed var(--panel-line); }
+.ing-add > label{ font-size:13px; font-weight:600; color:var(--ink-soft); display:block; margin-bottom:8px; }
+.ing-row{ display:flex; gap:8px; }
+.ing-input{
+  flex:1; border:1px solid var(--panel-line); border-radius:10px;
+  padding:10px 12px; font-family:inherit; font-size:14px; background:var(--white); color:var(--ink);
+}
+.ing-add-btn{
+  width:40px; border:none; border-radius:10px; background:var(--ink); color:var(--white);
+  font-size:19px; line-height:1; cursor:pointer; transition:background .15s ease;
+}
+.ing-add-btn:hover{ background:var(--red); }
+.ing-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.ing-tag{
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--bg-panel); border:1px solid var(--panel-line); color:var(--ink);
+  font-size:13px; padding:5px 6px 5px 12px; border-radius:100px;
+}
+.ing-tag button{
+  border:none; background:none; color:var(--ink-soft); cursor:pointer;
+  width:18px; height:18px; border-radius:50%; font-size:13px; line-height:1;
+}
+.ing-tag button:hover{ background:var(--panel-line); color:var(--ink); }
+
+footer{ padding:18px 28px 22px; text-align:center; }
+footer p{ font-size:12.5px; }

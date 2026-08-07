@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Готово. — что приготовить</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">Готово<span class="logo-dot">.</span></div>
+  </div>
+</nav>
+
+<main class="app">
+  <div class="app-head">
+    <span class="eyebrow">AI for Everyday Life</span>
+    <h1>Что приготовить?</h1>
+  </div>
+
+  <div class="fridge">
+    <div class="fridge-bar">
+      <span>холодильник · открыт</span>
+      <span class="lights"><span></span><span></span></span>
+    </div>
+    <div class="magnets" id="magnets" role="group" aria-label="Категории блюд"></div>
+    <div class="fridge-controls">
+      <div class="control">
+        <div class="row">
+          <label for="timeRange">Время на готовку</label>
+          <span id="timeVal" class="mono control-val">30 мин</span>
+        </div>
+        <input type="range" id="timeRange" min="10" max="90" step="5" value="30">
+      </div>
+      <div class="control">
+        <div class="row">
+          <label for="calRange">Калорийность</label>
+          <span id="calVal" class="mono control-val">500 ккал</span>
+        </div>
+        <input type="range" id="calRange" min="100" max="1200" step="50" value="500">
+      </div>
+    </div>
+    <button class="fridge-cta" id="goBtn">Что приготовить?</button>
+    <div class="hint" id="hint">Отметь хотя бы одну категорию блюд</div>
+    <div class="ing-add">
+      <label for="ingInput">Овощи и другое</label>
+      <div class="ing-row">
+        <input type="text" id="ingInput" class="ing-input" placeholder="Например, помидоры">
+        <button type="button" id="ingAddBtn" class="ing-add-btn" aria-label="Добавить">+</button>
+      </div>
+      <div class="ing-tags" id="ingTags"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Готово<span style="color:var(--red)">.</span> · Ilmhona × MLH</p>
+</footer>
+
+<script src="/static/js/index.js"></script>
+</body>
+</html>
