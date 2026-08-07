@@ -76,7 +76,6 @@ document.getElementById('goBtn').addEventListener('click', () => {
   }
   hint.textContent = '';
 
-  // Show the panel in a loading state while the request is in flight.
   resultEl.classList.add('show');
   loadingDots.style.display = 'flex';
   resName.textContent = '';
